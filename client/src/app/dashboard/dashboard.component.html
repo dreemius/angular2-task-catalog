@@ -1,0 +1,41 @@
+
+	<md-grid-list cols="2" rowHeight="550px">
+		<md-grid-tile>
+
+			<md-card class="dashboard-card">
+				<a [routerLink]="'/task'">
+					<img md-card-image src="./assets/images/list.jpg">
+				</a>
+				<md-card-content>
+					<md-card-title>Список задач</md-card-title>
+					<p>
+					Cписок задач, которые вы бы хотели сохранить и не забыть из реализовать в будующем.
+					</p>
+				</md-card-content>
+				<md-card-actions>
+					<button [routerLink]="'/list'" md-button>Смотреть задачи</button>
+				</md-card-actions>
+				
+			</md-card>
+
+		</md-grid-tile>
+		<md-grid-tile>
+
+			<md-card class="dashboard-card">
+				<a [routerLink]="'/statistics'">
+					<img md-card-image src="./assets/images/statistics.jpg">
+				</a>
+				<md-card-content>
+					<md-card-title>Статистика</md-card-title>
+					<p>
+					Здесь вы сможете увидеть статистическую информацию, которая касается всех ваших задач
+					</p>
+				</md-card-content>
+				<md-card-actions>
+					<button md-button>Смотреть статистику</button>
+				</md-card-actions>
+			</md-card>
+
+
+		</md-grid-tile>
+	</md-grid-list>

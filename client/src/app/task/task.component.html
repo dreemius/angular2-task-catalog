@@ -1,0 +1,48 @@
+                <!--<md-checkbox md-list-icon class="example-margin" checked="true"></md-checkbox>-->
+
+<md-grid-list cols="1" [style.display] = "isLoaded ? 'block': 'none'" >
+    <div class="list-mode">
+        <a md-raised-button [color]="accent" routerLink="/task/new"><md-icon>add</md-icon>Добавить задачу</a><br>
+    </div>
+    <md-card>
+        <h1>Список важных дел</h1>
+        <section class="list-mode">
+        <md-slide-toggle
+            class="example-margin"
+            [color]="primary"
+            (click)="toggleCompleted()">
+            Показать завершенные
+        </md-slide-toggle>
+        </section>
+
+        <md-nav-list>
+            <div *ngIf="isCompletedVisible">
+                <h3 md-subheader>Завершенные задачи</h3>
+                <md-list-item *ngFor="let completed of filteredTasks.completed" [routerLink]="'/task/' + completed.id">
+                    <md-icon md-list-icon>check_box</md-icon>
+                    <h4 md-line>{{completed.name}}</h4>
+                    <md-chip-list><md-chip selected="true" color="{{urgencyMap[completed.urgency].code}}">{{urgencyMap[completed.urgency].name}}</md-chip></md-chip-list>
+                    <div md-line>{{completed.description}}</div>
+                    <div md-line class="date-item">{{completed.finishTo | date:"MM/dd/yy"}}</div>
+                </md-list-item>
+            </div>
+            <md-divider></md-divider>
+            <h3 md-subheader>В процессе</h3>
+            <md-list-item *ngFor="let uncompleted of filteredTasks.uncompleted" [routerLink]="'/task/' + uncompleted.id">
+                <md-icon md-list-icon>event_note</md-icon>
+                <h4 md-line>{{uncompleted.name}}</h4>
+                <md-chip-list><md-chip selected="true" color="{{urgencyMap[uncompleted.urgency].code}}">{{urgencyMap[uncompleted.urgency].name}}</md-chip></md-chip-list>
+                <div md-line>{{uncompleted.description}}</div>
+                <div md-line class="date-item">{{uncompleted.finishTo | date:"MM/dd/yy"}}</div>
+            </md-list-item>
+        </md-nav-list>
+    </md-card>
+
+</md-grid-list>
+    
+
+<md-grid-list cols="1" *ngIf = "!isLoaded">
+     <md-card class="loading-card">
+        <img class="loading" src="./assets/images/loading.gif">
+     </md-card>
+</md-grid-list>

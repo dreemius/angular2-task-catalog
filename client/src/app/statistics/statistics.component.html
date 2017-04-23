@@ -1,0 +1,27 @@
+<md-grid-list cols="1" *ngIf = "isLoaded">
+    <md-card class="dashboard-card">
+        
+    <md-card-title>Статистика по задачам</md-card-title>
+        <img md-card-image src="./assets/images/stats-big.jpg">
+
+        <md-card-content>
+            <p>
+            Здесь вы можете узнать всю статистику по вашим задачам.
+            </p>
+            <md-card-title>Всего задач: <b>{{statistics.all}}</b></md-card-title>
+            <md-card-title>Выполненых задач: <b>{{statistics.completed}}</b></md-card-title>
+            <md-card-title>Задач в процессе: <b>{{statistics.uncompleted}}</b></md-card-title>
+            <md-card-title>Срочных задач: <b>{{statistics.urgent}}</b></md-card-title>
+        </md-card-content>
+        <md-card-actions>
+            <button [routerLink]="'/task'" md-button>Вернуться к списку задач</button>
+        </md-card-actions>
+        
+    </md-card>
+</md-grid-list>
+
+<md-grid-list cols="1" *ngIf = "!isLoaded">
+     <md-card class="loading-card">
+        <img class="loading" src="./assets/images/loading.gif">
+     </md-card>
+</md-grid-list>

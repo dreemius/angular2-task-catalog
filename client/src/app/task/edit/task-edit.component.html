@@ -1,0 +1,45 @@
+
+<md-grid-list cols="1" *ngIf = "isLoaded">
+    <md-card class="dashboard-card">
+        
+    <md-card-title>Редактирование задачи</md-card-title>
+
+        <md-card-content>
+            <form class="example-form">
+                <section class="example-section">
+                    <md-checkbox md-list-icon class="example-half-width" checked="false" #isSelected>{{isSelected.checked? 'Выполнено': 'Не выполнено'}}</md-checkbox>
+                    <md-select placeholder="Выберите срочность" class="example-half-width">
+                        <md-option *ngFor="let food of foods" [value]="food.value">
+                            {{ food.viewValue }}
+                        </md-option>
+                    </md-select>      
+                </section>
+
+                <md-input-container class="example-full-width">
+                    <input mdInput placeholder="Название" value="Новая задача">
+                </md-input-container>
+
+                <md-input-container class="example-full-width">
+                    <textarea mdInput placeholder="Описание задачи"></textarea>
+                </md-input-container>
+
+                <a md-raised-button [color]="accent" routerLink="/task"><md-icon>check</md-icon>Сохранить</a><br>
+            </form>
+
+        </md-card-content>
+        
+        
+    </md-card>
+</md-grid-list>
+
+<md-grid-list cols="1" *ngIf = "!isLoaded">
+     <md-card class="loading-card">
+        <img class="loading" src="./assets/images/loading.gif">
+     </md-card>
+</md-grid-list>
+
+
+
+
+
+

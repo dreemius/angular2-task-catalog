@@ -35,3 +35,11 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+# misc
+/.idea
+/typings
+
+#System Files
+.DS_Store
+Thumbs.db

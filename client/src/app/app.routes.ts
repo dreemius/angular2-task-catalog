@@ -5,7 +5,10 @@ import { StatisticsComponent } from "./statistics/statistics.component";
 import { TaskComponent } from "./task/task.component";
 import { TaskEditComponent } from "./task/edit/task-edit.component";
 
-/** this is routes block, so lets commit */
+/** this is routes block, so lets commit
+ * now is fixed
+ * 
+ */
 export const routes: Routes = [
     { path: "", redirectTo: "dashboard", pathMatch: "full" },
     { path: "dashboard",    component: DashboardComponent },

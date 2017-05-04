@@ -2,10 +2,10 @@ import { Routes } from "@angular/router";
 
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { StatisticsComponent } from "./statistics/statistics.component";
-import { TaskComponent } from "./task/task.component";
 import { TaskEditComponent } from "./task/edit/task-edit.component";
+import { TaskComponent } from "./task/task.component";
 
-
+/* this is routes configuration */
 export const routes: Routes = [
     { path: "", redirectTo: "dashboard", pathMatch: "full" },
     { path: "dashboard",    component: DashboardComponent },

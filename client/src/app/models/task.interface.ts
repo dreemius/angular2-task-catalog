@@ -1,4 +1,8 @@
-export const UrgencyMap: Object[] = [{code: 'warn', name: "Срочно"}, {code: 'accent', name: "Нормально"}, {code: 'primary', name:"Не срочно"}]
+export const UrgencyMap: Object[] = [
+    {idCode: 0, code: 'warn', name: "Срочно"}, 
+    {idCode: 1, code: 'accent', name: "Нормально"}, 
+    {idCode: 2, code: 'primary', name:"Не срочно"}
+    ]
 
 export const enum Urgency {
     Hi,
@@ -7,12 +11,13 @@ export const enum Urgency {
 }
 
 export interface Task { 
-    id: Number,
-    name: String
-    description: String
-    status: Boolean
+    id: number,
+    name: string
+    description: string
+    status: boolean
     urgency: Urgency
-    finishTo: Date   
+    finishTo: Date,
+    finishToStr ?: string 
 }
 
 export interface FilteredTasks { 

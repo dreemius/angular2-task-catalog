@@ -15,3 +15,4 @@ export class AppComponent {
         { path: '/statistics', icon: 'settings', label: 'Статистика'}
     ];
 }
+

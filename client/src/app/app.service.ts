@@ -25,8 +25,12 @@ export class AppService {
             setTimeout(() => {
                 observer.next(this.items);
                 observer.complete();
-            }, 800);
+            }, 400);
         });
+    }
+
+    getTaskById (id: number) : Task {
+        return this.items.filter(item => {return item.id == id})[0];
     }
 
 

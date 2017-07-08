@@ -3,27 +3,53 @@
     <md-card class="dashboard-card">
         
     <md-card-title>Редактирование задачи</md-card-title>
-
         <md-card-content>
-            <form class="example-form">
+            
+            <form class="example-form" #taskForm="ngForm">
                 <section class="example-section">
-                    <md-checkbox md-list-icon class="example-half-width" checked="false" #isSelected>{{isSelected.checked? 'Выполнено': 'Не выполнено'}}</md-checkbox>
-                    <md-select placeholder="Выберите срочность" class="example-half-width">
-                        <md-option *ngFor="let food of foods" [value]="food.value">
-                            {{ food.viewValue }}
+                    <md-checkbox md-list-icon class="example-half-width" name="status" 
+                    [checked]="task.status" #isSelected>{{isSelected.checked ? 'Выполнено': 'Не выполнено'}}</md-checkbox>
+                    
+                    <md-select placeholder="Выберите срочность" class="example-half-width" name="urgency"
+                    [(ngModel)]="task.urgency">
+                        <md-option *ngFor="let item of urgencyList" [value]="item.idCode">
+                            {{ item.name }}
                         </md-option>
                     </md-select>      
                 </section>
 
                 <md-input-container class="example-full-width">
-                    <input mdInput placeholder="Название" value="Новая задача">
+                    <input mdInput placeholder="Название" name="name" 
+                    required pattern="[A-Za-z]{4,10}" [(ngModel)]="task.name" #taskName="ngModel">
                 </md-input-container>
+                <div [hidden]="taskName.valid || taskName.untouched" class="error">
+                    Имя отсутствует или короче 4 символов
+                </div>
 
                 <md-input-container class="example-full-width">
-                    <textarea mdInput placeholder="Описание задачи"></textarea>
+                    <input type="date" mdInput name="date" 
+                    required [(ngModel)]="task.finishToStr" #taskDate="ngModel">
                 </md-input-container>
+                <div [hidden]="taskDate.valid || taskDate.untouched" class="error">
+                    Дата отсутствует
+                </div>
 
-                <a md-raised-button [color]="accent" routerLink="/task"><md-icon>check</md-icon>Сохранить</a><br>
+                <md-input-container class="example-full-width">
+                    <textarea mdInput placeholder="Описание задачи" name="descriptionTask" 
+                    required [(ngModel)]="task.description"></textarea>
+                </md-input-container>
+                <div [hidden]="true" class="error">
+                    Описание обязательно
+                </div>
+
+                <a md-raised-button [color]="accent" (click)="createTask()" [disabled]="!taskForm.form.valid">
+                    <md-icon>check</md-icon>Сохранить
+                </a> &nbsp;
+                <a md-raised-button [color]="accent" (click)="createEmptyTask(); taskForm.reset()">
+                    Стереть
+                </a>
+                <br>
+
             </form>
 
         </md-card-content>
